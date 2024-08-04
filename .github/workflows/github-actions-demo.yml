@@ -1,0 +1,16 @@
+ name: CI com Docker
+ on:
+  push:
+    # Define os eventos que disparam o workflow
+    branches: [ main ]
+ jobs:
+  build: 
+     # Define o ambiente de execução
+     runs-on: ubuntu-latest
+    steps:
+        # obter o código do repositório
+      - uses: actions/checkout@v3
+      - name: Construir Imagem Docker
+        run: docker build -t LuBrito371/sauter_university-main .
+      - name: Executar Comando no Contêiner
+        run: docker run -p 8080:80 "d6e7a8898321e844333aa8a3843f2f36403e5df74a313ab0f268036aac49d325"
